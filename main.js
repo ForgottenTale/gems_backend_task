@@ -13,7 +13,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 
 
-app.listen(5000, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${5000}`);
 })
