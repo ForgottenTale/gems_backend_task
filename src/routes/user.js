@@ -3,29 +3,24 @@ const router = express.Router();
 const checkAuth = require("../middleware/checkAuth");
 const db = require("../data/data")
 
-router.post('/recommendations', checkAuth, async (req, res) => {
+router.get('/recommendations', checkAuth, async (req, res) => {
     try {
 
-        if (req.body.username === undefined) {
-            const data = shuffle(db.recommendations);
-            res.json(data);
-        } else {
+        // if (req.body.username === undefined) {
+        const data = shuffle(db.recommendations);
+        res.json(data);
+        // } else {
 
-        }
+        // }
     } catch (err) {
         res.status(400).send({ error: err.message });
     }
 });
 
-router.post('/subscriptions', checkAuth, async (req, res) => {
+router.get('/subscriptions', checkAuth, async (req, res) => {
     try {
-
-        if (req.body.username === undefined) {
-            const data = shuffle(db.subs);
-            res.json(data);
-        } else {
-
-        }
+        const data = shuffle(db.subs);
+        res.json(data);
     } catch (err) {
         res.status(400).send({ error: err.message });
     }

@@ -3,9 +3,11 @@ const jwt = require("jsonwebtoken");
 module.exports = async function checkAuth(req, res, next) {
 
     try {
-       
-        if (req.headers.token !== undefined) {
-            const data = await jwt.decode(req.headers.token);
+        const authHeader = req.headers['authorization'];
+
+        if (authHeader !== undefined) {
+            const token = authHeader.split(' ')[1];
+            const data = await jwt.decode(token);
             console.log(data);
             if (data.username !== undefined && data.username === "Jack") {
                 next();

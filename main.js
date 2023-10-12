@@ -11,9 +11,11 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
-
+app.get('/',(req,res)=>{
+res.send("The server is running")
+})
 
 app.listen(process.env.PORT || 3000, (err) => {
     if (err) throw err;
-    console.log(`> Ready on http://localhost:${5000}`);
+    console.log(`> Ready on http://localhost:${3000}`);
 })
